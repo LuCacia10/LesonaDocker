@@ -207,6 +207,12 @@ node_modules
 *.log
 
 ```
+## Build avec arguments
+```
+
+docker build --build-arg APP_VERSION=1.0.0 -t mon-app .
+
+```
 
 
 
