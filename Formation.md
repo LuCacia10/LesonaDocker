@@ -103,6 +103,54 @@ docker-compose down
 ```
 - Arrêter les services
 
+# Nettoyage
+```
+docker container prune
+
+```
+- Supprimer tous les conteneurs arrêtés
+
+```
+docker image prune -a
+
+```
+- Supprimer toutes les images non utilisées
+```
+docker volume prune
+
+```
+- Supprimer tous les volumes non utilisés
+
+# Les réseaux Docker
+## Types de réseaux disponibles
+```
+docker network ls
+
+```
+- Lister les réseaux existants
+## Lister les réseaux existants
+```
+docker network create --driver bridge mon-reseau
+
+```
+- Créer un réseau bridge personnalisé
+```
+docker network inspect mon-reseau
+
+```
+- Inspecter le réseau
+## Connecter des conteneurs à un réseau
+```
+docker run -d --name conteneur1 --network mon-reseau alpine sleep 3600
+docker run -d --name conteneur2 --network mon-reseau alpine sleep 3600
+
+```
+- Lancer deux conteneurs sur le même réseau
+```
+docker exec conteneur1 ping conteneur2
+
+```
+- Tester la connexion
 
 
 
