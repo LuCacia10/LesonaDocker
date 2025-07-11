@@ -49,6 +49,63 @@ docker run mon-curleur
 ```
 - Lancer le conteneur
 
+# Gestion des volumes
+```
+docker volume create mon-volume
+
+```
+- Créer un volume
+```
+docker run -d -v mon-volume:/data --name conteneur-volume alpine tail -f /dev/null
+
+```
+- Lancer un conteneur avec le volume
+```
+echo "Bonjour Docker" > test.txt
+docker cp test.txt conteneur-volume:/data/
+
+```
+- Copier un fichier dans le volume
+```
+docker exec conteneur-volume cat /data/test.txt
+
+```
+- Vérifier le contenu
+
+# Docker Compose
+Créez un fichier docker-compose.yml:
+```
+version: '3'
+services:
+  web:
+    image: nginx
+    ports:
+      - "8000:80"
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+```
+Puis exécutez:
+```
+docker-compose up -d
+
+```
+- Démarrer les services
+```
+docker-compose ps
+
+```
+- Vérifier l'état
+```
+docker-compose down
+
+```
+- Arrêter les services
+
+
+
+
 
 
 
