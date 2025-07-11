@@ -61,7 +61,7 @@ docker run -d -v mon-volume:/data --name conteneur-volume alpine tail -f /dev/nu
 ```
 - Lancer un conteneur avec le volume
 ```
-echo "Bonjour Docker" > test.txt
+echo "Bonjour!" > test.txt
 docker cp test.txt conteneur-volume:/data/
 
 ```
@@ -161,6 +161,52 @@ docker network create -d macvlan \
 
 ```
 - Créer un réseau macvlan (nécessite des privilèges)
+# Dockerfiles avancés
+## Multi-stage builds
+Dockerfile :
+```
+
+FROM golang:1.18 as builder
+WORKDIR /app
+COPY . .
+RUN go build -o monapp .
+
+FROM alpine:latest
+WORKDIR /root/
+COPY --from=builder /app/monapp .
+CMD ["./monapp"]
+
+```
+## Optimisation du cache
+Dockerfile :
+```
+
+FROM node:14
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+ARG APP_VERSION
+ENV VERSION=${APP_VERSION}
+
+HEALTHCHECK --interval=30s --timeout=3s \
+  CMD curl -f http://localhost/ || exit 1
+
+EXPOSE 3000
+CMD ["node", "server.js"]
+
+```
+##  Build context et .dockerignore
+```
+node_modules
+.git
+*.md
+*.log
+
+```
 
 
 
