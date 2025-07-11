@@ -151,6 +151,16 @@ docker exec conteneur1 ping conteneur2
 
 ```
 - Tester la connexion
+## Types de réseaux avancés
+```
+docker network create -d macvlan \
+  --subnet=192.168.1.0/24 \
+  --gateway=192.168.1.1 \
+  -o parent=eth0 \
+  mon-macvlan
+
+```
+- Créer un réseau macvlan (nécessite des privilèges)
 
 
 
