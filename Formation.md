@@ -1,6 +1,6 @@
 # Definition
 
-Docker est une plateforme permettant de lancer certaines applications dans des conteneurs logiciels lancée en 2013.
+Docker est une plateforme permettant de lancer certaines applications dans des conteneurs logiciels lancée en 2013. C'est un outil qui peut empaqueter une application et ses dépendances dans un conteneur isolé, qui pourra être exécuté sur n'importe quel serveur ». Il ne s'agit pas de virtualisation, mais de conteneurisation, une forme plus légère qui s'appuie sur certaines parties de la machine hôte pour son fonctionnement.
 
 # Premier Conteneur
   ```
