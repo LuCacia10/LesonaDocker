@@ -11,16 +11,16 @@ docker run hello-world
 - Crée un conteneur éphémère
 
 # Gestion des Images
+- Liste les images locales :
 ```
 docker images
 
 ```
-- Liste les images locales
+- Montre tous les conteneurs (même arrêtés)
 ```
 docker ps -a
   
 ```
-- Montre tous les conteneurs (même arrêtés)
 
 # Conteneur Nginx
 ```
@@ -102,14 +102,11 @@ docker-compose up -d
 docker-compose ps
 
 ```
-
 - Arrêter les services :
 ```
 docker-compose down
 
 ```
-
-
 # Nettoyage
 ```
 docker container prune
@@ -130,35 +127,39 @@ docker volume prune
 
 # Les réseaux Docker
 ## Types de réseaux disponibles
+- Lister les réseaux existants :
 ```
 docker network ls
 
 ```
-- Lister les réseaux existants
 ## Lister les réseaux existants
+
+- Créer un réseau bridge personnalisé :
 ```
 docker network create --driver bridge mon-reseau
 
 ```
-- Créer un réseau bridge personnalisé
+- Inspecter le réseau :
 ```
 docker network inspect mon-reseau
 
 ```
-- Inspecter le réseau
+
 ## Connecter des conteneurs à un réseau
+- Lancer deux conteneurs sur le même réseau :
 ```
 docker run -d --name conteneur1 --network mon-reseau alpine sleep 3600
 docker run -d --name conteneur2 --network mon-reseau alpine sleep 3600
 
 ```
-- Lancer deux conteneurs sur le même réseau
+- Tester la connexion :
 ```
 docker exec conteneur1 ping conteneur2
 
 ```
-- Tester la connexion
+
 ## Types de réseaux avancés
+- Créer un réseau macvlan (nécessite des privilèges) :
 ```
 docker network create -d macvlan \
   --subnet=192.168.1.0/24 \
@@ -167,7 +168,7 @@ docker network create -d macvlan \
   mon-macvlan
 
 ```
-- Créer un réseau macvlan (nécessite des privilèges)
+
 # Dockerfiles avancés
 ## Multi-stage builds
 Dockerfile :
