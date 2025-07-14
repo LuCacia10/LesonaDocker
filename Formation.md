@@ -42,39 +42,40 @@ CMD ["curl", "https://www.google.com"]
 
 ```
 Puis exécutez:
+- Construire l'image :
 ```
 docker build -t mon-curleur .
 
 ```
-- Construire l'image
+- Lancer le conteneur :
 ```
 docker run mon-curleur
 
 ```
-- Lancer le conteneur
 
 # Gestion des volumes
+- Créer un volume :
+
 ```
 docker volume create mon-volume
 
 ```
-- Créer un volume
+- Lancer un conteneur avec le volume :
 ```
 docker run -d -v mon-volume:/data --name conteneur-volume alpine tail -f /dev/null
 
 ```
-- Lancer un conteneur avec le volume
+- Copier un fichier dans le volume : 
 ```
 echo "Bonjour!" > test.txt
 docker cp test.txt conteneur-volume:/data/
 
 ```
-- Copier un fichier dans le volume
+- Vérifier le contenu :
 ```
 docker exec conteneur-volume cat /data/test.txt
 
 ```
-- Vérifier le contenu
 
 # Docker Compose
 Créez un fichier docker-compose.yml:
@@ -91,21 +92,23 @@ services:
       MYSQL_ROOT_PASSWORD: example
 ```
 Puis exécutez:
+- Démarrer les services :
 ```
 docker-compose up -d
 
 ```
-- Démarrer les services
+- Vérifier l'état :
 ```
 docker-compose ps
 
 ```
-- Vérifier l'état
+
+- Arrêter les services :
 ```
 docker-compose down
 
 ```
-- Arrêter les services
+
 
 # Nettoyage
 ```
