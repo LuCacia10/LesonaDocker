@@ -108,22 +108,22 @@ docker-compose down
 
 ```
 # Nettoyage
+- Supprimer tous les conteneurs arrêtés : 
 ```
 docker container prune
 
 ```
-- Supprimer tous les conteneurs arrêtés
+- Supprimer toutes les images non utilisées :
 
 ```
 docker image prune -a
 
 ```
-- Supprimer toutes les images non utilisées
+- Supprimer tous les volumes non utilisés :
 ```
 docker volume prune
 
 ```
-- Supprimer tous les volumes non utilisés
 
 # Les réseaux Docker
 ## Types de réseaux disponibles
